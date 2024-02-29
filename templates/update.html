@@ -1,0 +1,11 @@
+{% block content %}
+    <div class="container">
+        <h1>Update Item</h1>
+        <br>
+        <form action="/edit_items/{{ item.id }}" method="POST">
+            <input type="text" placeholder="Name" name="name" value="{{ item.name }}">
+            <input type="submit" value="Update Item Name" class="btn btn-secondary">
+        </form>
+            
+    </div>
+{% endblock %}
