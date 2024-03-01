@@ -100,10 +100,10 @@ button.delete-button {
 }
 
 button.delete-button:hover {
-  background-color: #630000; 
+  background-color: #9a0000; 
 }
 
-button[type="submit"] {
+button.clear-checked-button {
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 background-color: white; 
 color: black; 
@@ -114,7 +114,7 @@ border-radius: 5px;
 font-size: 1.1rem; 
 }
 
-button[type="submit"]:hover {
+button.clear-checked-button:hover {
 background-color: darkgray;
 }
 
