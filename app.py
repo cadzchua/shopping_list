@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
+import requests
 
 class Base(DeclarativeBase):
   pass
@@ -82,6 +83,24 @@ def clear_all_items():
         print("An error occurred:", str(e))
         flash(f"There was a problem updating the item name: {str(e)}", "error")
         return redirect(url_for("home"))
+
+@app.route("/googlemap", methods=["GET", "POST"])
+def googlemap():
+    if request.method == "POST":
+        if 'geolocation' in request.headers.get('User-Agent'):
+            return render_template("googlemap.html", use_geolocation=True)
+        else:
+            location = "Singapore"
+            radius = 5
+            keyword = "shopping mall" 
+
+            places_url = f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={location}&radius={radius}&keyword={keyword}&key=YOUR_API_KEY"
+            response = requests.get(places_url)
+            data = response.json()
+
+            return render_template("googlemap.html", data=data)
+
+    return render_template("googlemap.html")
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=6969)
