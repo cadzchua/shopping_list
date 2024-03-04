@@ -42,10 +42,8 @@ def checked_items(item_id):
 @app.route("/edit_items/<int:item_id>", methods=["GET", "POST"])
 def edit_items(item_id):
     item = ShoppingItem.query.get_or_404(item_id)
-    print(item)
     if request.method == "POST":
         new_name = request.form.get("name")
-        print(new_name)  
         try:
             item.name = new_name
             db.session.commit()

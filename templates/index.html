@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="shopping icon" href="static/shoppingcart.png">
+    <link rel="shortcut icon" type="image/shoppingcart.png" href="static/shoppingcart.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shopping List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
@@ -56,7 +56,7 @@
       </div>
       <div class="clear-all-button-container">
         <form action="{{ url_for('clear_all_items') }}" method="POST">
-          <button class="clear_all_items-button" type="submit">Clear All Items</button>
+          <button class="clear_all_items-button" type="submit">Clear All</button>
         </form>
       </div>
     </div>
