@@ -28,7 +28,7 @@ def home():
         new_item = ShoppingItem(name=items_name)
         db.session.add(new_item)
         db.session.commit()
-
+        return redirect(url_for("home"))
     items = ShoppingItem.query.all()
     return render_template("index.html", items=items)
 
@@ -72,6 +72,18 @@ def clear_checked_items():
         db.session.delete(item)
     db.session.commit()
     return redirect(url_for("home"))
+
+@app.route("/clear_all_items", methods=["POST"])
+def clear_all_items():
+    try:
+        db.session.query(ShoppingItem).delete()
+        db.session.commit()
+        return redirect(url_for("home"))  
+    except Exception as e:
+        db.session.rollback()
+        print("An error occurred:", str(e))
+        flash(f"There was a problem updating the item name: {str(e)}", "error")
+        return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=6969)

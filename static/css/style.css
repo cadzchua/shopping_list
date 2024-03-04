@@ -15,19 +15,22 @@ h1 {
   color: white; 
   padding-top: 20px;
   padding-bottom: 20px;
+  padding-left: 20px;
   background-position: center;
 }
 
-.shopping-list-title {
-  display: inline-block; 
+.shopping-top-container h1 {
+  display: flex;
+  align-items: center; 
+  color: white; 
 }
 
-.shopping-cart-logo {
-  width: 40px;
-  height: 40px;
-  margin-left: 10px; 
-  vertical-align: middle;
+.shopping-top-container h1 .shopping-list-icon {
+  width: 5%; 
+  height: auto; 
+  margin-left: 20px; 
 }
+
 
 .input-container {
 display: flex;
@@ -105,7 +108,7 @@ button.delete-button:hover {
 
 button.clear-checked-button {
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-background-color: white; 
+background-color: rgb(65, 206, 0); 
 color: black; 
 border: none;
 padding: 5px 10px; 
@@ -115,10 +118,30 @@ font-size: 1.1rem;
 }
 
 button.clear-checked-button:hover {
-background-color: darkgray;
+background-color: rgb(32, 137, 0);
 }
 
 .clear-button-container {
 text-align: right;
 margin-top: 10px; 
 }
+
+button.clear_all_items-button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: rgb(231, 0, 0); 
+  color: black; 
+  border: none;
+  padding: 5px 10px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  font-size: 1.1rem; 
+  }
+  
+  button.clear_all_items-button:hover {
+  background-color: rgb(135, 0, 0);
+  }
+  
+  .clear-all-button-container {
+  text-align: right;
+  margin-top: 10px; 
+  }

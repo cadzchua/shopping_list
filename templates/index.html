@@ -3,6 +3,7 @@
 
   <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" type="shopping icon" href="static/shoppingcart.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shopping List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
@@ -10,8 +11,9 @@
   </head>
 
   <body>
-    <h1>Shopping List</h1>
-
+    <div class="shopping-top-container">
+      <h1>Shopping List<img src="static/shoppinglist.png" alt="Shopping List" class="shopping-list-icon"></h1>
+    </div>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <div class="flash-messages">
@@ -49,12 +51,21 @@
       {% endfor %}
       <div class="clear-button-container">
         <form action="{{ url_for('clear_checked_items') }}" method="POST">
-          <button type="submit">Clear Checked Items</button>
+          <button class="clear-checked-button" type="submit">Clear Checked Items</button>
+        </form>
+      </div>
+      <div class="clear-all-button-container">
+        <form action="{{ url_for('clear_all_items') }}" method="POST">
+          <button class="clear_all_items-button" type="submit">Clear All Items</button>
         </form>
       </div>
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+      crossorigin="anonymous">
+    </script>
   </body>
 </html>
