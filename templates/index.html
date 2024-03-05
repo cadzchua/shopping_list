@@ -30,29 +30,30 @@
       {% endif %}
       {% endwith %}
 
-      <form action="{{ url_for('home') }}" class="input-container" method="POST">
-          <input type="text" placeholder="Enter items here" id="input_items" name="input_items_name">
-          <button id="add_items">+</button>
-      </form>
-      <h2>Item List</h2>
       <div class="shopping-container">
+        <h2>Item List</h2>
         {% for item in items %}
-
         <div class="shopping">
           <p>{{ item.name }}</p>
           <div class="actions">
-              <form action="{{ url_for('checked_items', item_id=item.id) }}" method="POST">
-                  <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
-              </form>
-              <form action="{{ url_for('edit_items', item_id=item.id) }}" method="GET">
-                <button class="edit-button" type="submit">Edit</button>
-              </form>
-              <form action="{{ url_for('delete_items', item_id=item.id) }}" method="POST">
-                  <button class="delete-button">Delete</button>
-              </form>
+            <form action="{{ url_for('checked_items', item_id=item.id) }}" method="POST">
+              <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
+            </form>
+            <form action="{{ url_for('edit_items', item_id=item.id) }}" method="GET">
+              <button class="edit-button" type="submit">Edit</button>
+            </form>
+            <form action="{{ url_for('delete_items', item_id=item.id) }}" method="POST">
+              <button class="delete-button">Delete</button>
+            </form>
           </div>
         </div>
         {% endfor %}
+      
+        <form action="{{ url_for('home') }}" class="input-container" method="POST">
+          <input type="text" placeholder="Enter items here" id="input_items" name="input_items_name" oninput="adjustInputWidth(this)">
+          <button id="add_items">+</button>
+        </form>
+      
         <div class="clear-button-container">
           <form action="{{ url_for('clear_checked_items') }}" method="POST">
             <button class="clear-checked-button" type="submit">Clear Checked Items</button>
@@ -63,6 +64,7 @@
             <button class="clear_all_items-button" type="submit">Clear All</button>
           </form>
         </div>
+      </div>      
     </div>
 
 
