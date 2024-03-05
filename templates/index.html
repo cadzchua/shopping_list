@@ -34,11 +34,17 @@
         <h2>Item List</h2>
         {% for item in items %}
         <div class="shopping">
-          <p>{{ item.name }}</p>
-          <div class="actions">
+          
+          <div class="item-details">
             <form action="{{ url_for('checked_items', item_id=item.id) }}" method="POST">
-              <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
+              <label class="custom-checkbox {% if item.checked %}checked{% endif %}">
+                <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
+              </label>
             </form>
+          
+          <p>{{ item.name }}</p>
+          </div>
+          <div class="actions">
             <form action="{{ url_for('edit_items', item_id=item.id) }}" method="GET">
               <button class="edit-button" type="submit">Edit</button>
             </form>
@@ -64,9 +70,8 @@
             <button class="clear_all_items-button" type="submit">Clear All</button>
           </form>
         </div>
-      </div>      
-    </div>
-
+      </div>
+            
 
     <script 
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
