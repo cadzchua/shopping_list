@@ -1,0 +1,7 @@
+version: '3'
+services:
+    website:
+      image:
+      ports:
+        -"6969:6969"
+      restart: always
